@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/selection_layout_land"
+    android:background="@drawable/tiled_background"
+    android:orientation="vertical">
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/rock"
+        android:id="@+id/iv_rock"
+
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/paper"
+        android:layout_toLeftOf="@id/iv_rock"
+        android:layout_centerVertical="true"
+        android:id="@+id/iv_paper"
+        android:layout_margin="@dimen/margin_selection_horizontal"
+
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/scissors"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/iv_rock"
+        android:id="@+id/iv_scissors"
+        android:layout_margin="@dimen/margin_selection_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textSize="@dimen/player_message_text_size"
+        android:textColor="@color/message_text_color"
+        android:id="@+id/player_turn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_top_player_text"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/message_text_color"
+    android:textSize="@dimen/message_text_size"
+    android:text="@string/selection_label"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/iv_rock"
+    android:layout_marginTop="@dimen/title_margin"/>
+
+</RelativeLayout>

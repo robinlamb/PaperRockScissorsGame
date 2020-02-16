@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="menu_color">#CCffffff</color>
+    <color name="menu_text_color">#263238</color>
+    <color name="message_text_color">#ffff00</color>
+    <color name="menu_button_color">#cfd8dc</color>
+</resources>

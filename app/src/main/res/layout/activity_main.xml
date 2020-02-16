@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.robinsmobilestuff.paperrockscissors.MainActivity"
+    android:background="@drawable/tiled_backgroundtitle"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_background"
+        android:padding="@dimen/title_padding"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/game_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/title_margin"
+            android:textSize="@dimen/title_textsize"
+            android:text="@string/app_name"
+            android:textColor="@color/menu_text_color"
+
+            />
+
+        <TextView
+            android:id="@+id/one_player_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/button_margin"
+            android:paddingTop="@dimen/button_padding"
+            android:paddingBottom="@dimen/button_padding"
+            android:paddingLeft="@dimen/button_padding_side"
+            android:paddingRight="@dimen/button_padding_side"
+            android:text="@string/one_player_label"
+            android:textSize="@dimen/main_activity_button_text"
+            android:background="@color/menu_button_color"
+            android:elevation="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/two_player_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/button_margin"
+            android:paddingTop="@dimen/button_padding"
+            android:paddingBottom="@dimen/button_padding"
+            android:paddingLeft="@dimen/button_padding_side"
+            android:paddingRight="@dimen/button_padding_side"
+            android:text="@string/two_player_label"
+            android:textSize="@dimen/main_activity_button_text"
+            android:background="@color/menu_button_color"
+            android:elevation="10dp"
+
+           />
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

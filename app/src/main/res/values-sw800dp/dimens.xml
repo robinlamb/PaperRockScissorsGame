@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="picture_margin">100dp</dimen>
+    <dimen name="title_margin">50dp</dimen>
+    <dimen name="margin_top_bottom">100dp</dimen>
+    <dimen name="margin_top_player_text">80dp</dimen>
+    <dimen name="margin_play_again">70dp</dimen>
+    <dimen name="player_message_text_size">55dp</dimen>
+    <dimen name="margin_selection_horizontal">150dp</dimen>
+    <dimen name="margin_win_message_horizontal">50dp</dimen>
+</resources>

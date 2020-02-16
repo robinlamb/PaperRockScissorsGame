@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/tiled_background">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/title_margin"
+    android:layout_marginTop="@dimen/margin_top_bottom"
+    android:padding="@dimen/padding_play_again"
+    android:background="@drawable/selections_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/menu_text_color"
+        android:textSize="@dimen/selected_item_text_size"
+        android:id="@+id/player_one_selected_item"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/menu_text_color"
+        android:textSize="@dimen/selected_item_text_size"
+        android:id="@+id/player_two_selected_item"
+/>
+
+</LinearLayout>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:id="@+id/picturelayout"
+    android:layout_margin="@dimen/title_margin">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/game_over_image1"
+        android:layout_marginLeft="@dimen/picture_margin"
+        android:layout_marginRight="@dimen/picture_margin"
+
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/game_over_image2"
+        android:layout_below="@id/game_over_image1"
+        android:layout_marginLeft="@dimen/picture_margin"
+        android:layout_marginRight="@dimen/picture_margin"
+        android:layout_marginTop="@dimen/picture_margin"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/game_over_label"
+        android:layout_below="@id/picturelayout"
+        android:textColor="@color/message_text_color"
+        android:textSize="@dimen/player_message_text_size"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/play_again"
+        android:textSize="@dimen/play_again_text_size"
+        android:id="@+id/play_again_button"
+        android:layout_marginRight="@dimen/margin_play_again"
+        android:layout_marginBottom="@dimen/margin_top_bottom"
+        android:padding="@dimen/button_padding"
+        android:background="@color/menu_button_color"
+        android:textColor="@color/menu_text_color"
+        android:elevation="10dp"
+        />
+</RelativeLayout>
