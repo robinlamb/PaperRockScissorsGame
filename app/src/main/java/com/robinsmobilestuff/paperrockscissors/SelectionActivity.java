@@ -1,3 +1,8 @@
+//Robin Lamb
+//Paper Rock Scissors
+
+//SelectionActivity class to make a selection of paper, rock, or scissors
+
 package com.robinsmobilestuff.paperrockscissors;
 
 import android.app.Activity;
@@ -38,28 +43,28 @@ public class SelectionActivity extends Activity {
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-
-
-
+        //Find views from XML
         final ImageView imgPaper = (ImageView)findViewById(R.id.iv_paper);
         final ImageView imgRock = (ImageView)findViewById(R.id.iv_rock);
         final ImageView imgScissors = (ImageView)findViewById(R.id.iv_scissors);
         final TextView tvPlayerTurn = (TextView)findViewById(R.id.player_turn);
 
-
+        //Animator to animate selection
         final Animator animator = AnimatorInflater.loadAnimator(this, R.animator.selection_animator);
-
-
 
 
         if ((!MainActivity.IsOnePlayerGame) && (IsFirstTurn)) {
             tvPlayerTurn.setText(R.string.player_one_turn);
+            
+            //Play text animation from XML file
             tvPlayerTurn.startAnimation(AnimationUtils.loadAnimation(SelectionActivity.this, R.anim.anim_flashing_text));
 
         }
 
         else if (!MainActivity.IsOnePlayerGame){
             tvPlayerTurn.setText(R.string.player_two_turn);
+            
+            //Play text animation from XML file
             tvPlayerTurn.startAnimation(AnimationUtils.loadAnimation(SelectionActivity.this, R.anim.anim_flashing_text));
         }
         else {
@@ -69,7 +74,7 @@ public class SelectionActivity extends Activity {
         imgPaper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Animate the paper image to be larger if it is selected
                 animator.setTarget(imgPaper);
                 animator.start();
 
@@ -78,10 +83,14 @@ public class SelectionActivity extends Activity {
                 if (IsFirstTurn){
                     intFirstPlayersChoice = GameLogic.PAPER;
                     if (MainActivity.IsOnePlayerGame){
+                        
                         intSecondPlayersChoice = GenerateComputerChoice();
+                        
                         DeclareWinner(intFirstPlayersChoice, intSecondPlayersChoice);
                     }
                     if(!MainActivity.IsOnePlayerGame){
+                        //If this is a two player game, and the first player's turn give 
+                        //the second player a choice
                         IsFirstTurn = false;
                         ChangePlayer(tvPlayerTurn);
 
@@ -99,22 +108,28 @@ public class SelectionActivity extends Activity {
         imgRock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Make rock image animated to become larger when it is selected
                 animator.setTarget(imgRock);
                 animator.start();
 
                 if (IsFirstTurn){
                     intFirstPlayersChoice = GameLogic.ROCK;
                     if (MainActivity.IsOnePlayerGame){
+                        
                         intSecondPlayersChoice = GenerateComputerChoice();
                         DeclareWinner(intFirstPlayersChoice, intSecondPlayersChoice);
                     }
 
                     if(!MainActivity.IsOnePlayerGame){
+                        //If this is a two player game, and the first player's turn give the
+                        //second player a choice
                         IsFirstTurn = false;
                         ChangePlayer(tvPlayerTurn);
                     }
                 }
                 else {
+                    //If this is the second player's choice, store the selection as their
+                    //choice
                     intSecondPlayersChoice = GameLogic.ROCK;
                     DeclareWinner(intFirstPlayersChoice, intSecondPlayersChoice);
                 }
@@ -126,6 +141,7 @@ public class SelectionActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+                //Animate scissors picture to get larger if it is selected
                 animator.setTarget(imgScissors);
                 animator.start();
 
@@ -138,11 +154,14 @@ public class SelectionActivity extends Activity {
                     }
 
                     if(!MainActivity.IsOnePlayerGame){
+                        //If this is a two player game and the first player's choice,
+                        //give the second player a turn
                         IsFirstTurn = false;
                         ChangePlayer(tvPlayerTurn);
                     }
                 }
                 else {
+                    //If this is the second players turn, store the selection as their choice
                     intSecondPlayersChoice = GameLogic.SCISSORS;
                     DeclareWinner(intFirstPlayersChoice, intSecondPlayersChoice);
                 }
@@ -202,10 +221,11 @@ public class SelectionActivity extends Activity {
         return super.onOptionsItemSelected(menuItem);
     }
 
+    //Display text on the screen to show this is the second player's turn
     public void ChangePlayer(final TextView textView){
 
 
-
+        //Animate the text with the text anim file in XML
         textView.startAnimation(AnimationUtils.loadAnimation(SelectionActivity.this, R.anim.anim_fade_out));
         textView.getAnimation().setAnimationListener(new Animation.AnimationListener() {
             @Override
