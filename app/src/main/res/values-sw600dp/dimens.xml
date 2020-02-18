@@ -1,3 +1,4 @@
+<!-- Alternative dimensions for screen with a smallest width of 600dp-->
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="activity_horizontal_margin">64dp</dimen>
