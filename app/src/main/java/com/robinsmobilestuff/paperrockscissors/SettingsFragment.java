@@ -1,3 +1,7 @@
+//Robin Lamb
+//Paper Rock Scissors
+//File for the Preference Fragment
+
 package com.robinsmobilestuff.paperrockscissors;
 
 
@@ -5,9 +9,6 @@ import android.os.Bundle;
 
 import android.preference.PreferenceFragment;
 
-/**
- * Created by Robin on 11/17/2017.
- */
 
 public class SettingsFragment extends PreferenceFragment{
     @Override
