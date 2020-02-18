@@ -1,3 +1,8 @@
+//Robin Lamb
+//Paper Rock Scissors Game
+
+//Main activity which will display a choice from which to start a one or two player game
+
 package com.robinsmobilestuff.paperrockscissors;
 
 import android.animation.Animator;
@@ -14,6 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
+    //Boolean to store whether the game is a one or two player game
     public static boolean IsOnePlayerGame;
 
     @Override
@@ -33,24 +39,35 @@ public class MainActivity extends Activity {
         final TextView btnOnePlayerGame = (TextView) findViewById(R.id.one_player_button);
         final TextView btnTwoPlayerGame = (TextView) findViewById(R.id.two_player_button);
 
+        //Handle one player game button click
         btnOnePlayerGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
+                //Animate button
                 animator.setTarget(btnOnePlayerGame);
                 animator.start();
-                IsOnePlayerGame = true;
+               
+                IsOnePlayerGame = true; //One player game
                 StartNewGame();
+                
+                //Set as first player's turn
                 SelectionActivity.IsFirstTurn = true;
             }
         });
 
+       //Handle two player button click
        btnTwoPlayerGame.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+               //Animate button
                animator.setTarget(btnTwoPlayerGame);
                animator.start();
-               IsOnePlayerGame = false;
+               
+               IsOnePlayerGame = false; //Two player game
                StartNewGame();
+               
+               //Set as first player's turn
                SelectionActivity.IsFirstTurn = true;
            }
        });
@@ -59,6 +76,7 @@ public class MainActivity extends Activity {
 
     }
 
+    //Menu with sound option
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -66,6 +84,7 @@ public class MainActivity extends Activity {
         return true;
     }
 
+    //Start the settings activity if the sound option in the menu is clicked 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         int id = menuItem.getItemId();
@@ -77,6 +96,7 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(menuItem);
     }
 
+    //Start a new activity to start a game
     public void StartNewGame() {
         Intent intent = new Intent(MainActivity.this, SelectionActivity.class);
         MainActivity.this.startActivity(intent);
