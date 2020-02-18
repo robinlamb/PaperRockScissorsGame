@@ -1,3 +1,7 @@
+//Robin Lamb
+//Paper Rock Scissors
+
+//SettingsActivity for settings
 package com.robinsmobilestuff.paperrockscissors;
 
 import android.app.Activity;
