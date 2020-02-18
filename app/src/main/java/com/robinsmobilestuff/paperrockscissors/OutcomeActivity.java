@@ -1,3 +1,8 @@
+//Robin Lamb
+//Paper Rock Scissors
+
+//Activity to display game outcome picture and message and play correct sound
+
 package com.robinsmobilestuff.paperrockscissors;
 
 import android.animation.Animator;
@@ -20,16 +25,17 @@ import android.media.MediaPlayer;
 
 
 
-
-
 public class OutcomeActivity extends Activity implements SharedPreferences.OnSharedPreferenceChangeListener{
 
-
+    //Integers to store the picture, message, and first selection (to use the constant values stored in the 
+    //Game Logic class
+    
     private int intPicture;
     private int intMessage;
     private int intFirstSelection;
     private int intSecondSelection;
 
+    //Variables to start the MediaPlayer to play sound
     private MediaPlayer newMediaPlayer;
     private boolean MediaPlayerIsRunning = false;
     public boolean AudioOn;
@@ -40,22 +46,25 @@ public class OutcomeActivity extends Activity implements SharedPreferences.OnSha
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gameover_layout);
+        
         ImageView gameOver2 = (ImageView) findViewById(R.id.game_over_image2);
         gameOver2.setVisibility(View.GONE);
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
         readSharedPreferences();
 
-
+        //An intent to share the values of the picture, message, and the first and second
+        //players selections from the SelectionActivity
         Intent intent = getIntent();
         intPicture = intent.getExtras().getInt("picture");
         intMessage = intent.getExtras().getInt("message");
         intFirstSelection = intent.getExtras().getInt("firstplayer");
         intSecondSelection = intent.getExtras().getInt("secondplayer");
 
+        //Animate the button
         final Animator animator = AnimatorInflater.loadAnimator(this, R.animator.button_animator);
 
-
+        //Views from the XML file
         ImageView gameOver1 = (ImageView) findViewById(R.id.game_over_image1);
 
         final TextView tvMessage = (TextView) findViewById(R.id.game_over_label);
@@ -63,7 +72,8 @@ public class OutcomeActivity extends Activity implements SharedPreferences.OnSha
         TextView tvPlayer1Selection = (TextView) findViewById(R.id.player_one_selected_item);
         TextView tvPlayer2Selection = (TextView) findViewById(R.id.player_two_selected_item);
 
-
+        //Switch statement to display the appropriate picture and play the appropriate sound according to 
+        //the outcome given
         switch (intPicture) {
             case GameLogic.PAPER_COVERS_ROCK: {
                 gameOver1.setImageResource(R.drawable.paper_covers_rock);
@@ -150,6 +160,7 @@ public class OutcomeActivity extends Activity implements SharedPreferences.OnSha
 
         }//end switch
 
+        //Switch statement to display the appropriate message
         switch (intMessage) {
             case GameLogic.PLAYER_ONE_WINS: {
                 if (MainActivity.IsOnePlayerGame)
@@ -169,7 +180,9 @@ public class OutcomeActivity extends Activity implements SharedPreferences.OnSha
             default:
                 tvMessage.setText(R.string.draw);
         }//end switch
+        
         tvMessage.startAnimation(AnimationUtils.loadAnimation(OutcomeActivity.this, R.anim.anim_flashing_text));
+        
         switch (intFirstSelection) {
             case GameLogic.PAPER: {
                 tvPlayer1Selection.setText(R.string.player_one_paper);
@@ -215,6 +228,7 @@ public class OutcomeActivity extends Activity implements SharedPreferences.OnSha
         }//End switch
 
 
+        //Button to play another game
         btnPlayAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -244,6 +258,7 @@ public class OutcomeActivity extends Activity implements SharedPreferences.OnSha
         MediaPlayerIsRunning = false;
     }
 
+    //Menu with sound option
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -251,6 +266,7 @@ public class OutcomeActivity extends Activity implements SharedPreferences.OnSha
         return true;
     }
 
+    //Activity to change sound settings
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         int id = menuItem.getItemId();
@@ -262,6 +278,7 @@ public class OutcomeActivity extends Activity implements SharedPreferences.OnSha
         return super.onOptionsItemSelected(menuItem);
     }
 
+    //Turn sound off if it is off and the menu has just been changed
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(getString(R.string.preference_audio_on_key))) {
@@ -277,6 +294,7 @@ public class OutcomeActivity extends Activity implements SharedPreferences.OnSha
         }
     }
 
+    //Read the Shared Preference storing if the user has turned the sound off
     private void readSharedPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         AudioOn = sharedPreferences.getBoolean(getString(R.string.preference_audio_on_key),getResources().getBoolean(R.bool.preference_audio_on));
